@@ -8,3 +8,4 @@
  */
 
 require_once plugin_dir_path( __FILE__ ) . 'includes/books-post-type.php';
+require_once plugin_dir_path( __FILE__ ) . 'includes/locations-post-type.php';
