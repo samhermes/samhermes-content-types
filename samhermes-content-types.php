@@ -7,14 +7,9 @@
  * Author URI: https://samhermes.com
  */
 
+// Load custom post types
 require_once plugin_dir_path( __FILE__ ) . 'includes/books-post-type.php';
 require_once plugin_dir_path( __FILE__ ) . 'includes/locations-post-type.php';
- 
-add_filter('acf/settings/save_json', function() {
-	return dirname(__FILE__) . '/acf-json';
-});
 
-add_filter('acf/settings/load_json', function() {
-	$paths[] = dirname(__FILE__) . '/acf-json';
-	return $paths;
-});
+// Load custom fields
+require_once plugin_dir_path( __FILE__ ) . 'includes/books-fields.php';
