@@ -50,6 +50,9 @@ function samhermes_locations_post_type() {
 		'publicly_queryable'    => true,
 		'capability_type'       => 'page',
 		'show_in_rest'          => true,
+		'show_in_graphql' 		=> true,
+		'graphql_single_name' 	=> 'location',
+		'graphql_plural_name' 	=> 'locations',
 	);
 	register_post_type( 'locations', $args );
 
