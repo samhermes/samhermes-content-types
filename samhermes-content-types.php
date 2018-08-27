@@ -20,3 +20,35 @@ function samhermes_acf_init() {
 	acf_update_setting( 'google_api_key', 'AIzaSyCRwBjaYzaXEbPTJEl4MjVqtNHtHO9fkwc' );
 }
 add_action('acf/init', 'samhermes_acf_init');
+
+// Add ACF fields to REST API responses
+function wp_rest_api_alter() {
+    register_rest_field( 'books',
+        'fields',
+        array(
+          'get_callback' => function( $data, $field, $request, $type ) {
+            if ( function_exists( 'get_fields' ) ) {
+              return get_fields( $data['id'] );
+            }
+            return [];
+          },
+          'update_callback' => null,
+          'schema'          => null,
+        )
+    );
+
+    register_rest_field( 'locations',
+        'fields',
+        array(
+          'get_callback' => function( $data, $field, $request, $type ) {
+            if ( function_exists( 'get_fields' ) ) {
+              return get_fields( $data['id'] );
+            }
+            return [];
+          },
+          'update_callback' => null,
+          'schema'          => null,
+        )
+    );
+  }
+  add_action( 'rest_api_init', 'wp_rest_api_alter');
